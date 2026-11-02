@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink | Blood Donor Finder</title>
+    <meta name="description" content="Connect with blood donors and help save lives with LifeLink.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#" class="brand" onclick="showTab('find'); return false;">
+            <span class="brand-icon">✚</span>
+            <span>Life<span class="brand-highlight">Link</span></span>
+        </a>
+
+        <div class="nav-links">
+            <button class="nav-link active" onclick="showTab('find')">Find a Donor</button>
+            <button class="nav-link" onclick="showTab('all')">Our Donors</button>
+        </div>
+
+       <div class="nav-actions">
+
+    
+    <button class="nav-admin" id="adminLoginBtn" onclick="adminLogin()">
+        Admin Login
+    </button>
+
+    <button class="nav-logout" id="adminLogoutBtn"
+        onclick="adminLogout()" style="display:none">
+        Logout
+    </button>
+
+    <button class="nav-register" onclick="showTab('register')">
+        Become a Donor <span>↗</span>
+    </button>
+
+    </div>
+    </nav>
+
+
+    <main class="container">
+
+        <!-- FIND DONOR TAB -->
+        <section id="tab-find">
+
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        EVERY DONATION MATTERS
+                    </div>
+
+                    <h1>
+                        A little of you.<br>
+                        <span>A lifetime for someone.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Every drop has the power to save a life.
+                        Find blood donors near you or become someone's reason to smile.
+                    </p>
+
+                    <div class="hero-actions">
+                        <button class="hero-primary" onclick="document.getElementById('donor-search').scrollIntoView({behavior:'smooth'})">
+                            Find a Blood Donor <span>→</span>
+                        </button>
+                        <button class="hero-secondary" onclick="showTab('register')">
+                            Become a Donor
+                        </button>
+                    </div>
+
+                    <div class="hero-note">
+                        <span class="note-icon">♥</span>
+                        Connecting people. Saving lives.
+                    </div>
+                </div>
+
+               
+                
+            <div class="hero-visual">
+
+                 <p class="image-quote quote-top">
+                 "A single drop can give someone a second chance"🩸
+                </p>
+
+                <img
+                src="images/blood-hero.jpg"
+                alt="Blood donation illustration"
+                class="hero-image"
+                >
+
+                <p class="image-quote quote-bottom">
+                "Be someone's reason to live today"🩸
+                </p>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- SEARCH SECTION -->
+            <section class="search-section" id="donor-search">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">FIND YOUR MATCH</span>
+                        <h2>Find a blood donor</h2>
+                        <p>Search for registered donors by blood group and city.</p>
+                    </div>
+                    <div class="search-symbol">⌕</div>
+                </div>
+
+                <div class="search-panel">
+                    <div class="form-group">
+                        <label for="sblood">Blood group</label>
+                        <select id="sblood">
+                            <option value="">All Blood Groups</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scity">Your city</label>
+                        <input type="text" id="scity" placeholder="Enter city name">
+                    </div>
+
+                    <button class="search-button" onclick="searchDonors()">
+                        Search Donors <span>→</span>
+                    </button>
+                </div>
+
+                <div class="search-hint">
+                    <span>ⓘ</span> Select a blood group and city, or leave them blank to view all donors.
+                </div>
+
+                <div id="searchResults" class="results-area"></div>
+            </section>
+
+
+            <!-- HOW IT WORKS -->
+            <section class="how-section">
+                <div class="center-heading">
+                    <span class="section-kicker">SIMPLE. MEANINGFUL. LIFE-SAVING.</span>
+                    <h2>How LifeLink works</h2>
+                    <p>Three simple steps can help make a difference.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">⌕</div>
+                        <h3>Find a donor</h3>
+                        <p>Search for donors using the required blood group and location.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">♡</div>
+                        <h3>Connect</h3>
+                        <p>Find a matching donor and use their contact details to reach out.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">✚</div>
+                        <h3>Save a life</h3>
+                        <p>Coordinate donation with the recipient and medical professionals.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- CALL TO ACTION -->
+            <section class="cta-section">
+                <div>
+                    <span class="section-kicker">MAKE A DIFFERENCE</span>
+                    <h2>Someone out there needs you.</h2>
+                    <p>Become a registered donor and be there when someone needs help.</p>
+                </div>
+
+                <button onclick="showTab('register')">
+                    Register as a Donor <span>→</span>
+                </button>
+            </section>
+
+        </section>
+
+
+        <!-- REGISTER TAB -->
+        <section id="tab-register" class="inner-page" style="display:none">
+
+            <div class="page-intro">
+                <span class="section-kicker">BE THE REASON SOMEONE SMILES</span>
+                <h1>Become a <span>lifesaver.</span></h1>
+                <p>Your small act of kindness can make a big difference. Register as a blood donor today.</p>
+            </div>
+
+            <div class="registration-layout">
+
+                <div class="registration-side">
+                    <div class="side-heart">♥</div>
+                    <h2>Give blood.<br>Give hope.</h2>
+                    <p>Join our donor community and help connect people who need blood with people willing to donate.</p>
+
+                    <div class="side-points">
+                        <div><span>✓</span> Simple registration</div>
+                        <div><span>✓</span> Connect with people in need</div>
+                        <div><span>✓</span> Make a meaningful difference</div>
+                    </div>
+                </div>
+
+                <div class="card registration-card">
+                    <div class="form-title">
+                        <h2>Donor registration</h2>
+                        <p>Enter your details below to join our community.</p>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="dname">Full name *</label>
+                            <input type="text" id="dname" placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dage">Age *</label>
+                            <input type="number" id="dage" placeholder="Your age" min="18" max="65">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dblood">Blood group *</label>
+                            <select id="dblood">
+                                <option value="">Select blood group</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dcity">City *</label>
+                            <input type="text" id="dcity" placeholder="Enter your city">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dphone">Phone number *</label>
+                            <input type="tel" id="dphone" placeholder="10-digit mobile number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dgender">Gender</label>
+                            <select id="dgender">
+                                <option value="">Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="dlastdonation">Last donation date (if any)</label>
+                            <input type="date" id="dlastdonation">
+                        </div>
+
+                    </div>
+
+                    <div class="success-msg" id="regSuccess">
+                        ✓ Registered successfully as a blood donor!
+                    </div>
+
+                    <button class="btn-primary" onclick="registerDonor()">
+                        Complete Registration <span>→</span>
+                    </button>
+
+                    <p class="form-footnote">* Fields marked with an asterisk are required.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ALL DONORS TAB -->
+        <section id="tab-all" class="inner-page" style="display:none">
+
+            <div class="page-intro">
+                <span class="section-kicker">OUR COMMUNITY</span>
+                <h1>People who <span>make a difference.</span></h1>
+                <p>Meet the registered donors in our growing community.</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-icon">♥</div>
+                    <div class="num" id="totalDonors">0</div>
+                    <div class="lbl">Total Donors</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-icon">⌖</div>
+                    <div class="num" id="citiesCovered">0</div>
+                    <div class="lbl">Cities Covered</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-icon">✚</div>
+                    <div class="num" id="bloodGroups">0</div>
+                    <div class="lbl">Blood Groups</div>
+                </div>
+            </div>
+
+            <div class="card donors-panel">
+                <div class="donors-heading">
+                    <div>
+                        <h2>Registered donors</h2>
+                        <p>Browse the available donor directory.</p>
+                    </div>
+                    <span class="directory-label">DONOR DIRECTORY</span>
+                </div>
+
+                <div id="allDonorsList"></div>
+            </div>
+
+        </section>
+
+        <!-- ADMIN LOGIN -->
+<section id="adminLoginSection" class="inner-page" style="display:none">
+
+    <div class="card registration-card admin-login-card">
+
+        <div class="form-title">
+            <h2>Admin Login</h2>
+            <p>Sign in to manage the LifeLink donor directory.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="adminUsername">Username</label>
+            <input type="text" id="adminUsername"
+                   placeholder="Enter admin username">
+        </div>
+
+        <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input type="password" id="adminPassword"
+                   placeholder="Enter admin password">
+        </div>
+
+        <p id="adminLoginError" style="display:none; color:red;"></p>
+
+        <button class="btn-primary" onclick="submitAdminLogin()">
+            Login
+        </button>
+
+        <button class="nav-admin" onclick="showTab('find')">
+            Cancel
+        </button>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <span class="brand-icon">✚</span>
+            Life<span class="brand-highlight">Link</span>
+        </div>
+        <p>Connecting people. Saving lives.</p>
+        <span class="footer-copy">© 2026 LifeLink. Made with care.</span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+    <script>
+        // Keep the navigation highlight in sync with the selected tab.
+        const originalShowTab = showTab;
+
+        showTab = function(tab) {
+            originalShowTab(tab);
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            if (tab === 'find') {
+                document.querySelectorAll('.nav-link')[0].classList.add('active');
+            } else if (tab === 'all') {
+                document.querySelectorAll('.nav-link')[1].classList.add('active');
+            }
+        };
+    </script>
+
+</body>
+</html>
